@@ -1,0 +1,19 @@
+{
+  "name": "crystalrealm-landing",
+  "version": "1.0.0",
+  "description": "Coming soon landing page for CrystalRealm.eu",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "minecraft",
+    "landing-page",
+    "coming-soon"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

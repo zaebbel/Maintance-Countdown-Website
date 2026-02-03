@@ -1,0 +1,399 @@
+:root {
+    --primary-color: #a855f7;
+    --primary-hover: #9333ea;
+    --secondary-color: #6a0dad;
+    --bg-dark: #0a0a0b;
+    --text-white: #ffffff;
+    --text-muted: #a1a1aa;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Background Elements */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(10, 10, 11, 0.8), rgba(10, 10, 11, 0.8)),
+                url('https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=2070&auto=format&fit=crop'); /* Placeholder dark crystal-like bg */
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+    filter: blur(5px);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+    z-index: -1;
+}
+
+/* Content Layout */
+.content {
+    width: 90%;
+    max-width: 1000px;
+    text-align: center;
+    padding: 2rem 0;
+    z-index: 1;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Logo Section */
+.logo-section {
+    margin-bottom: 4rem;
+}
+
+.logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+/* Logo Styling and Fallback */
+.logo-container {
+    width: 220px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: float 4s ease-in-out infinite;
+    margin-bottom: 0.5rem;
+    user-select: none;
+}
+
+.status-badge {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--glass-border);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #ef4444; /* Red for maintenance */
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ef4444;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 30px rgba(168, 85, 247, 0.4)) drop-shadow(0 0 10px rgba(168, 85, 247, 0.2));
+    transition: var(--transition);
+    z-index: 2;
+}
+
+.logo:hover {
+    filter: drop-shadow(0 0 40px rgba(168, 85, 247, 0.6));
+    transform: scale(1.02);
+}
+
+/* CSS Fallback Logo if image fails */
+.logo-fallback {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #a855f7 0%, #6a0dad 100%);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 3rem;
+    color: white;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    z-index: 1;
+}
+
+.logo-fallback i {
+    font-size: 4rem;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.server-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    background: linear-gradient(to bottom, #fff, #a1a1aa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.server-name .dot {
+    color: var(--primary-color);
+    -webkit-text-fill-color: var(--primary-color);
+}
+
+.tagline {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Countdown Section */
+.countdown-section {
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.time-box {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    padding: 2rem 1rem;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+}
+
+.time-box:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -10px rgba(168, 85, 247, 0.3);
+}
+
+/* Animations for numbers */
+.time-number {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+.time-box:hover .time-number {
+    transform: scale(1.1);
+    color: var(--primary-color);
+}
+
+.time-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+}
+
+/* Action Section */
+.action-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.ip-container {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+}
+
+.ip-container:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary-color);
+}
+
+.ip-label {
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-right: 0.5rem;
+}
+
+.ip-address {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.ip-icon {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.tooltip.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-btn {
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: var(--transition);
+}
+
+.social-btn.discord {
+    background: #5865F2;
+}
+
+.social-btn.discord:hover {
+    background: #4752c4;
+    transform: scale(1.05);
+}
+
+.social-btn.twitter {
+    background: #1DA1F2;
+}
+
+.social-btn.twitter:hover {
+    background: #1a91da;
+    transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+    margin-top: auto;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .logo-container {
+        width: 160px;
+        height: 160px;
+    }
+
+    .server-name {
+        font-size: 2.5rem;
+    }
+
+    .countdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .time-number {
+        font-size: 2.5rem;
+    }
+
+    .social-links {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .social-btn {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .server-name {
+        font-size: 2rem;
+    }
+    
+    .time-box {
+        padding: 1.5rem 0.5rem;
+    }
+}
