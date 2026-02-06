@@ -41,7 +41,7 @@ The countdown page will be displayed immediately.
 
 Option 2: Local development (optional)
 
-If the project includes NPM scripts:
+If you have NPM installed:
 
 npm install
 npm start
